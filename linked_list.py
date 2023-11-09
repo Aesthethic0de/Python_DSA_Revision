@@ -1,3 +1,15 @@
+
+# LinkedList Properties:
+
+
+
+
+
+
+
+
+
+
 class Node:
     def __init__(self,value) -> None:
         self.value = value
@@ -55,6 +67,7 @@ class LinkedList:
             new_node = Node(value=value)
             self.head = new_node
             self.tail = new_node
+            self.length += 1
         else:
             if self.head.next is not None:
                 new_node = Node(value)
@@ -77,6 +90,8 @@ class LinkedList:
         return True
     
     def get_from_ll(self, index):
+        if index < 0 or index > self.length:
+            return False
         if self.length == 0:
             return None
         else:
@@ -84,38 +99,69 @@ class LinkedList:
                 temp = self.head
                 for i in range(index):
                     temp = temp.next
-                return temp.value
+                return temp
             else:
-                return None
-                
-                
-        
+                return False
             
-                
-                    
-
+    def set_value(self, index, value):
+        if self.length == 0:
+            return None
+        else:
+            if index < self.length:
+                temp = self.get_from_ll(index=index)
+                if temp:
+                    temp.value = value
+            return True
+    
+    def insert_node(self, index, value):
+        if index == 0:
+            return self.pre_append(value=value)
+        if index == self.length:
+            return self.append_end(value=value)
+        if index < 0 or index > self.length:
+            return False
+        else:
+            temp = self.head
+            new_node = Node(1000)
+            for i in range(index-1):
+                temp = temp.next
+                print(temp)
+            new_node.next = temp.next
+            temp.next = new_node
+                            
 if __name__ == "__main__":
     my_linked_list = LinkedList(6)
-    # my_linked_list.pre_append(5)
-    # my_linked_list.pre_append(7)
-    # my_linked_list.append_end(7)
-    my_linked_list.print_list()
-    # my_linked_list.pop_end()
-    # my_linked_list.print_list()
-    # my_linked_list.pop_end()
-    # my_linked_list.print_list()
-    my_linked_list.append_end(1)
-    my_linked_list.append_end(2)
-    my_linked_list.append_end(3)
-    my_linked_list.print_list()
     my_linked_list.pre_append(5)
-    my_linked_list.pre_append(10)
+    my_linked_list.pre_append(7)
+    my_linked_list.append_end(7)
+    my_linked_list.print_list()
     # my_linked_list.pop_end()
     my_linked_list.print_list()
-    my_linked_list.pre_append(1010)
+    my_linked_list.insert_node(index=2, value=1000)
     my_linked_list.print_list()
-    my_linked_list.pop_first()
-    my_linked_list.print_list()
-    my_linked_list.pop_first()
-    my_linked_list.print_list()
-    print(my_linked_list.get_from_ll(4))
+    # my_linked_list.insert_node(index=3, value=5)
+    # my_linked_list.print_list()
+    # my_linked_list.print_list()
+    # my_linked_list.pop_end()
+    # my_linked_list.print_list()
+    # my_linked_list.append_end(1)
+    # my_linked_list.append_end(2)
+    # my_linked_list.append_end(3)
+    # my_linked_list.print_list()
+    # my_linked_list.pre_append(5)
+    # my_linked_list.pre_append(10)
+    # # my_linked_list.pop_end()
+    # my_linked_list.print_list()
+    # my_linked_list.pre_append(1010)
+    # my_linked_list.print_list()
+    # my_linked_list.pop_first()
+    # my_linked_list.print_list()
+    # my_linked_list.pop_first()
+    # my_linked_list.print_list()
+    # print(my_linked_list.get_from_ll(4))
+    # my_linked_list.set_value(index=2, value=500)
+    # my_linked_list.print_list()
+    # my_linked_list.insert_node(index=3, value=4)
+    # my_linked_list.print_list()
+    # my_linked_list.insert_node(index=1, value=1000)
+    # my_linked_list.print_list()

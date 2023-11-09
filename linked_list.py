@@ -1,15 +1,5 @@
 
 # LinkedList Properties:
-
-
-
-
-
-
-
-
-
-
 class Node:
     def __init__(self,value) -> None:
         self.value = value
@@ -128,6 +118,29 @@ class LinkedList:
                 print(temp)
             new_node.next = temp.next
             temp.next = new_node
+            self.length += 1
+            return True
+            
+    def remove_at_node(self,index):
+        if self.length == 0:
+            return None
+        if index < 0 or index > self.length:
+            return None
+        if index == 0:
+            self.pop_first()
+        if index == self.length:
+            self.pop_end()
+        else:
+            temp = self.head
+            for i in range(index-1):
+                temp = temp.next
+            temp.next = temp.next.next
+            self.length -= 1
+            return True
+            
+        
+            
+        
                             
 if __name__ == "__main__":
     my_linked_list = LinkedList(6)
@@ -165,3 +178,11 @@ if __name__ == "__main__":
     # my_linked_list.print_list()
     # my_linked_list.insert_node(index=1, value=1000)
     # my_linked_list.print_list()
+    # my_linked_list.remove_at_node(index=0)
+    # my_linked_list.print_list()
+    # my_linked_list.remove_at_node(index=4)
+    my_linked_list.print_list()
+    my_linked_list.remove_at_node(index=3)
+    my_linked_list.print_list()
+    my_linked_list.remove_at_node(index=2)
+    my_linked_list.print_list()

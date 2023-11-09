@@ -1,5 +1,7 @@
 
 # LinkedList Properties:
+
+
 class Node:
     def __init__(self,value) -> None:
         self.value = value
@@ -115,7 +117,6 @@ class LinkedList:
             new_node = Node(1000)
             for i in range(index-1):
                 temp = temp.next
-                print(temp)
             new_node.next = temp.next
             temp.next = new_node
             self.length += 1
@@ -137,16 +138,30 @@ class LinkedList:
             temp.next = temp.next.next
             self.length -= 1
             return True
+        
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        before = None
+        for _ in range(self.length):
+            after = temp.next 
+            temp.next = before
+            before = temp
+            temp = after
+            
+            
+        
             
         
             
         
                             
 if __name__ == "__main__":
-    my_linked_list = LinkedList(6)
-    my_linked_list.pre_append(5)
-    my_linked_list.pre_append(7)
-    my_linked_list.append_end(7)
+    my_linked_list = LinkedList(1)
+    my_linked_list.pre_append(2)
+    my_linked_list.pre_append(3)
+    my_linked_list.append_end(4)
     my_linked_list.print_list()
     # my_linked_list.pop_end()
     my_linked_list.print_list()
@@ -181,8 +196,10 @@ if __name__ == "__main__":
     # my_linked_list.remove_at_node(index=0)
     # my_linked_list.print_list()
     # my_linked_list.remove_at_node(index=4)
+    # my_linked_list.print_list()
+    # my_linked_list.remove_at_node(index=3)
+    # my_linked_list.print_list()
+    # my_linked_list.remove_at_node(index=2)
     my_linked_list.print_list()
-    my_linked_list.remove_at_node(index=3)
-    my_linked_list.print_list()
-    my_linked_list.remove_at_node(index=2)
+    my_linked_list.reverse()
     my_linked_list.print_list()

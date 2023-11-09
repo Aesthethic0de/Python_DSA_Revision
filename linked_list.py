@@ -150,13 +150,7 @@ class LinkedList:
             before = temp
             temp = after
             
-            
-        
-            
-        
-            
-        
-                            
+                           
 if __name__ == "__main__":
     my_linked_list = LinkedList(1)
     my_linked_list.pre_append(2)
